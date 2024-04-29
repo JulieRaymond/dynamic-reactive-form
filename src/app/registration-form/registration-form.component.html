@@ -1,0 +1,201 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <div *ngIf="formSubmitted && registrationForm.invalid">
+    <span class="error">Veuillez remplir tous les champs correctement.</span>
+  </div>
+
+  <h2>Informations personnelles</h2>
+  <label for="firstName">Prénom</label>
+  <input
+    type="text"
+    id="firstName"
+    formControlName="firstName"
+    autocomplete="firstName"
+  />
+  <div
+    *ngIf="
+      registrationForm.get('firstName')?.invalid &&
+      registrationForm.get('firstName')?.touched
+    "
+  >
+    <span *ngIf="registrationForm.get('firstName')?.hasError('required')"
+      >Le prénom est requis.</span
+    >
+    <span *ngIf="registrationForm.get('firstName')?.hasError('minlength')"
+      >Le prénom doit avoir au moins 2 caractères.</span
+    >
+  </div>
+
+  <div>
+    <label for="lastName">Nom</label>
+    <input
+      type="text"
+      id="lastName"
+      formControlName="lastName"
+      autocomplete="lastName"
+    />
+    <div
+      *ngIf="
+        registrationForm.get('lastName')?.invalid &&
+        registrationForm.get('lastName')?.touched
+      "
+    >
+      <span *ngIf="registrationForm.get('lastName')?.hasError('required')"
+        >Le nom est requis.</span
+      >
+      <span *ngIf="registrationForm.get('lastName')?.hasError('minlength')"
+        >Le nom doit avoir au moins 2 caractères.</span
+      >
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      autocomplete="email"
+    />
+    <div
+      *ngIf="
+        registrationForm.get('email')?.invalid &&
+        registrationForm.get('email')?.touched
+      "
+    >
+      <span *ngIf="registrationForm.get('email')?.hasError('required')"
+        >L'email est requis.</span
+      >
+      <span *ngIf="registrationForm.get('email')?.hasError('email')"
+        >L'email saisi n'est pas au bon format.</span
+      >
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Mot de passe</label>
+    <input
+      type="password"
+      id="password"
+      formControlName="password"
+      autocomplete="new-password"
+    />
+    <div
+      *ngIf="
+        registrationForm.get('password')?.invalid &&
+        registrationForm.get('password')?.touched
+      "
+    >
+      <span *ngIf="registrationForm.get('password')?.hasError('required')"
+        >Le mot de passe est requis.</span
+      >
+    </div>
+  </div>
+
+  <div>
+    <label for="confirmPassword">Confirmation du mot de passe</label>
+    <input
+      type="password"
+      id="confirmPassword"
+      formControlName="confirmPassword"
+      autocomplete="new-password"
+    />
+    <div
+      *ngIf="
+        registrationForm.get('confirmPassword')?.invalid &&
+        registrationForm.get('confirmPassword')?.touched
+      "
+    >
+      <span *ngIf="registrationForm.errors?.['passwordMismatch']" class="error"
+        >Les mots de passe ne correspondent pas.</span
+      >
+      <span
+        *ngIf="registrationForm.get('confirmPassword')?.hasError('required')"
+        >La confirmation du mot de passe est requise.</span
+      >
+    </div>
+  </div>
+
+  <div formGroupName="address">
+    <h2>Adresse</h2>
+
+    <div>
+      <label for="street">Rue</label>
+      <input type="text" id="street" formControlName="street" />
+      <div
+        *ngIf="
+          registrationForm.get('address.street')?.invalid &&
+          registrationForm.get('address.street')?.touched
+        "
+      >
+        <span
+          *ngIf="registrationForm.get('address.street')?.hasError('required')"
+          >La rue est requise.</span
+        >
+      </div>
+    </div>
+
+    <div>
+      <label for="zipCode">Code postal</label>
+      <input type="text" id="zipCode" formControlName="zipCode" />
+      <div
+        *ngIf="
+          registrationForm.get('address.zipCode')?.invalid &&
+          registrationForm.get('address.zipCode')?.touched
+        "
+      >
+        <span
+          *ngIf="registrationForm.get('address.zipCode')?.hasError('required')"
+          >Le code postal est requis.</span
+        >
+      </div>
+    </div>
+
+    <div>
+      <label for="city">Ville</label>
+      <input type="text" id="city" formControlName="city" />
+      <div
+        *ngIf="
+          registrationForm.get('address.city')?.invalid &&
+          registrationForm.get('address.city')?.touched
+        "
+      >
+        <span *ngIf="registrationForm.get('address.city')?.hasError('required')"
+          >La ville est requise.</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <h2>Contacts d'urgence</h2>
+  <div formArrayName="emergencyContacts">
+    <div
+      *ngFor="let contact of emergencyContacts.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <label for="emergencyContactName{{ i }}">Nom du contact</label>
+      <input
+        type="text"
+        id="emergencyContactName{{ i }}"
+        formControlName="name"
+      />
+      <label for="emergencyContactPhone{{ i }}">Téléphone du contact</label>
+      <input
+        type="text"
+        id="emergencyContactPhone{{ i }}"
+        formControlName="phone"
+      />
+      <button
+        class="suppress-btn"
+        type="button"
+        (click)="removeEmergencyContact(i)"
+      >
+        Supprimer ce contact
+      </button>
+    </div>
+  </div>
+  <button class="add-btn" type="button" (click)="addEmergencyContact()">
+    Ajouter un contact d'urgence
+  </button>
+
+  <button class="submit-btn" type="submit">S'inscrire</button>
+</form>

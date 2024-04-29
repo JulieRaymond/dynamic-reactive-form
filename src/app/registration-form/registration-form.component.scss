@@ -1,0 +1,266 @@
+// /* /* Reset des styles */
+// * {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+// }
+
+// /* Style du formulaire */
+// form {
+//     max-width: 400px;
+//     margin: 0 auto;
+//     padding: 20px;
+//     background-color: #f9f9f9;
+//     border-radius: 8px;
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+// }
+
+// /* Style des messages d'erreur global */
+// .error {
+//     display: none;
+//     color: #d32f2f;
+//     /* Rouge pour les messages d'erreur */
+//     font-size: 0.9rem;
+//     margin-top: 5px;
+// }
+
+// form.ng-invalid.ng-dirty .error {
+//     display: block;
+// }
+
+
+// /* Style des titres */
+// h2 {
+//     margin-bottom: 15px;
+//     font-size: 1.5rem;
+//     color: #333;
+// }
+
+// /* Style des labels */
+// label {
+//     display: block;
+//     margin-bottom: 5px;
+//     font-weight: bold;
+//     color: #555;
+// }
+
+// /* Style des champs de texte */
+// input[type="text"],
+// input[type="email"],
+// input[type="password"] {
+//     width: 100%;
+//     padding: 10px;
+//     margin-bottom: 15px;
+//     border: 1px solid #ccc;
+//     border-radius: 4px;
+//     font-size: 1rem;
+//     transition: border-color 0.3s;
+// }
+
+// /* Style des messages d'erreur */
+// span.error {
+//     display: none;
+//     color: #d32f2f;
+//     /* Rouge pour les messages d'erreur */
+//     font-size: 0.9rem;
+//     margin-top: 5px;
+// }
+
+// /* Style des messages d'erreur en cas de champ invalide */
+// input.ng-invalid.ng-touched {
+//     border-color: #f90;
+//     /* Bordure orange pour les champs invalides */
+// }
+
+// input.ng-invalid.ng-touched+span.error {
+//     display: block;
+//     margin-top: 5px;
+// }
+
+// /* Style des messages d'erreur en cas de soumission invalide */
+// .ng-invalid.ng-dirty {
+//     border-color: #d32f2f;
+//     /* Bordure rouge pour les champs invalides après soumission */
+// }
+
+// .ng-invalid.ng-dirty+span.error {
+//     display: block;
+//     color: #d32f2f;
+//     /* Rouge pour les messages d'erreur */
+//     margin-top: 5px;
+// }
+
+// button {
+//     margin: 1rem 1rem;
+// }
+
+// /* Style du bouton Soumettre */
+// .submit-btn {
+//     width: calc(50% - 5px);
+//     padding: 10px;
+//     background-color: #007bff;
+//     border: none;
+//     border-radius: 4px;
+//     color: #fff;
+//     font-size: 1rem;
+//     cursor: pointer;
+//     transition: background-color 0.3s;
+//     margin-top: 20px;
+// }
+
+// .submit-btn:hover {
+//     background-color: #0056b3;
+// }
+
+// /* Style des boutons de suppression */
+// .suppress-btn {
+//     background-color: #d32f2f;
+//     color: #fff;
+//     border: none;
+//     border-radius: 4px;
+//     padding: 10px;
+//     cursor: pointer;
+//     transition: background-color 0.3s;
+// }
+
+// .suppress-btn:hover {
+//     background-color: #9a0007;
+// }
+
+// /* Style des boutons d'ajout */
+// .add-btn {
+//     background-color: #28a745;
+//     color: #fff;
+//     border: none;
+//     border-radius: 4px;
+//     padding: 10px;
+//     cursor: pointer;
+//     transition: background-color 0.3s;
+// }
+
+// .add-btn:hover {
+//     background-color: #218838;
+// }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+    display: none;
+    color: #d32f2f;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+form.ng-invalid.ng-dirty .error {
+    display: block;
+}
+
+h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+span {
+    color: orange;
+    margin: 1rem 1rem;
+    text-align: center;
+}
+
+span.error {
+    display: none;
+    color: #d32f2f;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+input.ng-invalid.ng-touched {
+    border-color: #f90;
+}
+
+input.ng-invalid.ng-touched+span.error {
+    display: block;
+    margin-top: 5px;
+}
+
+.ng-invalid.ng-dirty {
+    border-color: #d32f2f;
+}
+
+.ng-invalid.ng-dirty+span.error {
+    display: block;
+    color: #d32f2f;
+    margin-top: 5px;
+}
+
+button {
+    margin: 0.5rem;
+    /* Marge uniforme pour tous les boutons */
+    width: calc(50% - 1rem);
+    /* Taille de 50% avec marge */
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.suppress-btn {
+    background-color: #d32f2f;
+    color: #fff;
+}
+
+.suppress-btn:hover {
+    background-color: #9a0007;
+}
+
+.add-btn {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.add-btn:hover {
+    background-color: #218838;
+}
